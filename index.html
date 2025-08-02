@@ -3,74 +3,673 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FedEx - Store Hours and Services</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>FedEx - Ship, manage, track, deliver</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: #663399;
+            padding: 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .fed {
+            color: white;
+        }
+
+        .ex {
+            color: #FF6600;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .user-icon {
+            width: 45px;
+            height: 45px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger-line {
+            width: 30px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        .hero-section {
+            background: linear-gradient(45deg, #663399 0%, #663399 50%, #8B9F47 100%);
+            min-height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-text {
+            color: white;
+            font-size: 80px;
+            font-weight: 300;
+            line-height: 0.9;
+            letter-spacing: -2px;
+        }
+
+        .golf-ball-container {
+            position: relative;
+        }
+
+        .golf-ball {
+            width: 180px;
+            height: 180px;
+            background: #f8f8f8;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            background-image: 
+                radial-gradient(circle at 20% 20%, #ddd 1.5px, transparent 1.5px),
+                radial-gradient(circle at 60% 20%, #ddd 1.5px, transparent 1.5px),
+                radial-gradient(circle at 20% 60%, #ddd 1.5px, transparent 1.5px),
+                radial-gradient(circle at 60% 60%, #ddd 1.5px, transparent 1.5px),
+                radial-gradient(circle at 40% 40%, #ddd 1.5px, transparent 1.5px);
+            background-size: 15px 15px;
+        }
+
+        .golf-ball-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #663399;
+            font-weight: bold;
+        }
+
+        .golf-fedex {
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+
+        .golf-tournament {
+            font-size: 12px;
+            line-height: 1.1;
+        }
+
+        .services-nav {
+            background: white;
+            display: flex;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .service-tab {
+            flex: 1;
+            padding: 45px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .service-tab:hover {
+            background: #f5f5f5;
+        }
+
+        .service-tab.active {
+            background: #663399;
+            color: white;
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        .service-title {
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .tracking-section {
+            background: white;
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .tracking-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            border-radius: 0;
+        }
+
+        .tracking-input {
+            flex: 1;
+            padding: 25px 30px;
+            border: 1px solid #ddd;
+            border-right: none;
+            font-size: 16px;
+            outline: none;
+            color: #999;
+            font-style: italic;
+        }
+
+        .track-btn {
+            background: #FF6600;
+            color: white;
+            border: none;
+            padding: 25px 50px;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-section {
+            background: white;
+            padding: 60px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: normal;
+        }
+
+        .content-text {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .content-link {
+            color: #333;
+            text-decoration: underline;
+        }
+
+        .footer-section {
+            background: white;
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .footer-icon {
+            width: 120px;
+            height: 120px;
+            border: 4px solid #663399;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #663399;
+        }
+
+        .bottom-nav {
+            background: #2c2c2c;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            background: #555;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .add-btn {
+            width: 50px;
+            height: 50px;
+            background: #555;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .tab-counter {
+            background: #555;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .services-section {
+            background: white;
+            padding: 60px 20px;
+            width: 100%;
+        }
+
+        .service-item {
+            max-width: 400px;
+            margin: 0 auto 80px auto;
+            text-align: center;
+        }
+
+        .service-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-icon-container {
+            margin-bottom: 30px;
+        }
+
+        .service-icon-large {
+            width: 120px;
+            height: 80px;
+            margin: 0 auto;
+        }
+
+                 .service-title-large {
+             font-size: 24px;
+             font-weight: bold;
+             color: #0066CC;
+             letter-spacing: 1px;
+             text-align: center;
+         }
+
+         /* Why Ship with FedEx Section */
+         .why-fedex-section {
+             max-width: 800px;
+             margin: 0 auto;
+             padding: 40px 20px;
+             background: #f8f9fa;
+             border-radius: 12px;
+             margin-top: 40px;
+         }
+
+         .why-fedex-title {
+             font-size: 28px;
+             color: #333;
+             margin-bottom: 30px;
+             text-align: center;
+             font-weight: bold;
+         }
+
+         .feature-section {
+             margin-bottom: 25px;
+         }
+
+         .feature-title {
+             font-size: 18px;
+             color: #663399;
+             margin-bottom: 8px;
+             font-weight: bold;
+         }
+
+         .feature-text {
+             font-size: 16px;
+             color: #666;
+             line-height: 1.5;
+         }
+
+         .disclaimer-section {
+             margin-top: 30px;
+             padding-top: 20px;
+             border-top: 1px solid #ddd;
+         }
+
+         .disclaimer-text {
+             font-size: 14px;
+             color: #999;
+             margin-bottom: 5px;
+             font-style: italic;
+         }
+
+         .start-shipping-btn {
+             background: #FF6600;
+             color: white;
+             border: none;
+             padding: 15px 30px;
+             font-size: 16px;
+             font-weight: bold;
+             border-radius: 8px;
+             cursor: pointer;
+             margin-top: 25px;
+             display: block;
+             margin-left: auto;
+             margin-right: auto;
+             transition: background-color 0.3s ease;
+         }
+
+         .start-shipping-btn:hover {
+             background: #e55a00;
+         }
+    </style>
 </head>
 <body>
-    <!-- Mobile Status Bar -->
-    <div class="status-bar">
-    </div>
-
     <!-- Header -->
-    <header class="header">
-        <div class="logo">FedEx.</div>
-        <div class="header-icons">
-            <i class="fas fa-user"></i>
-            <i class="fas fa-bars"></i>
+    <div class="header">
+        <div class="logo">
+            <span class="fed">Fed</span><span class="ex">Ex</span>
         </div>
-    </header>
-
-    <!-- Main Content Area -->
-    <div class="main-content">
-        <!-- Tracking Form -->
-        <div class="tracking-form">
-            <h2>Track Your Package</h2>
-            <div class="input-group">
-                <input type="text" id="trackingId" placeholder="Enter tracking number" class="tracking-input">
-                <button class="track-btn" id="trackButton">
-                    <span>TRACK</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
+        <div class="header-right">
+            <div class="user-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
             </div>
-
-        </div>
-
-        <!-- Three Action Items -->
-        <div class="action-items">
-            <div class="action-item">
-                <i class="fas fa-store"></i>
-                <span>STORE HOURS AND SERVICES</span>
-            </div>
-            <div class="action-item">
-                <i class="fas fa-exclamation-triangle"></i>
-                <span>SERVICE ALERTS</span>
-            </div>
-            <div class="action-item">
-                <i class="fas fa-undo"></i>
-                <span>RETURN A PACKAGE</span>
-            </div>
-        </div>
-
-        <!-- Promotional Image -->
-        <div class="promo-image">
-            <div class="image-content">
-                <div class="man-figure"></div>
-                <div class="airplane"></div>
-                <div class="background-planes"></div>
+            <div class="hamburger">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
             </div>
         </div>
     </div>
 
-    <!-- Browser Navigation Bar -->
-    <div class="browser-nav">
-        <div class="address-bar">
-            <i class="fas fa-lock"></i>
-            <span>fedex.com</span>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                Ship, manage,<br>
+                track, deliver
+            </div>
+            <div class="golf-ball-container">
+                <div class="golf-ball">
+                    <div class="golf-ball-text">
+                        <div class="golf-fedex">FedEx</div>
+                        <div class="golf-tournament">St. Jude<br>CHAMPIONSHIP</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="home-indicator"></div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Services Navigation -->
+    <div class="services-nav">
+        <div class="service-tab">
+            <svg class="service-icon" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M3 3h18v2H3V3zm0 4h18v2H3V7zm0 4h18v2H3v-2zm0 4h12v2H3v-2z"/>
+                <rect x="2" y="2" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M2 6h20M6 10h8" stroke="currentColor" stroke-width="1"/>
+            </svg>
+            <div class="service-title">RATE & SHIP</div>
+        </div>
+        <div class="service-tab active">
+            <svg class="service-icon" viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="8" cy="14" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M14 14a2 2 0 0 1 2-2 2 2 0 0 1 2 2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <div class="service-title">TRACK</div>
+        </div>
+        <div class="service-tab">
+            <svg class="service-icon" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            <div class="service-title">LOCATIONS</div>
+        </div>
+    </div>
+
+    <!-- Tracking Section -->
+    <div class="tracking-section">
+        <div class="tracking-container">
+            <input type="text" class="tracking-input" value="TRACKING ID">
+            <button class="track-btn">
+                TRACK
+                <span>→</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+        <h2 class="content-title">Game on: The FedExCup® Playoffs begin</h2>
+        <p class="content-text">
+            Don't miss the season-long race to victory, starting with the FedEx St. Jude Championship. 
+            <a href="#" class="content-link">Get in on the excitement</a>
+        </p>
+    </div>
+
+    <!-- Services Section -->
+    <div class="services-section">
+        <div class="service-item">
+            <div class="service-icon-container">
+                <svg class="service-icon-large" viewBox="0 0 120 80">
+                    <!-- Truck body -->
+                    <rect x="15" y="35" width="45" height="20" rx="2" stroke="#663399" stroke-width="2.5" fill="none"/>
+                    <!-- Truck cab -->
+                    <rect x="60" y="25" width="25" height="30" rx="2" stroke="#663399" stroke-width="2.5" fill="none"/>
+                    <!-- Wheels -->
+                    <circle cx="28" cy="60" r="6" stroke="#663399" stroke-width="2.5" fill="none"/>
+                    <circle cx="72" cy="60" r="6" stroke="#663399" stroke-width="2.5" fill="none"/>
+                    <!-- Connection line -->
+                    <line x1="60" y1="35" x2="15" y2="35" stroke="#663399" stroke-width="2.5"/>
+                    <!-- FedEx text on truck -->
+                    <text x="37" y="47" fill="#663399" font-size="8" font-weight="bold" text-anchor="middle">FedEx</text>
+                </svg>
+            </div>
+            <h3 class="service-title-large">DROP OFF A PACKAGE</h3>
+        </div>
+
+        <div class="service-item">
+            <div class="service-icon-container">
+                <svg class="service-icon-large" viewBox="0 0 120 80">
+                    <!-- Store building -->
+                    <rect x="30" y="30" width="60" height="35" rx="2" stroke="#663399" stroke-width="2.5" fill="none"/>
+                    <!-- Awning -->
+                    <path d="M25 30 Q60 20 95 30" stroke="#663399" stroke-width="2.5" fill="none"/>
+                    <line x1="35" y1="30" x2="30" y2="40" stroke="#663399" stroke-width="2"/>
+                    <line x1="85" y1="30" x2="90" y2="40" stroke="#663399" stroke-width="2"/>
+                    <!-- Door -->
+                    <rect x="55" y="50" width="10" height="15" stroke="#663399" stroke-width="2" fill="none"/>
+                    <!-- Windows -->
+                    <rect x="40" y="40" width="8" height="6" stroke="#663399" stroke-width="1.5" fill="none"/>
+                    <rect x="72" y="40" width="8" height="6" stroke="#663399" stroke-width="1.5" fill="none"/>
+                </svg>
+            </div>
+            <h3 class="service-title-large">REDIRECT A PACKAGE</h3>
+        </div>
+
+        <div class="service-item">
+            <div class="service-icon-container">
+                <svg class="service-icon-large" viewBox="0 0 120 80">
+                    <!-- Store with awning -->
+                    <rect x="30" y="35" width="60" height="30" rx="2" stroke="#663399" stroke-width="2.5" fill="none"/>
+                    <!-- Striped awning -->
+                    <path d="M25 35 L95 35" stroke="#663399" stroke-width="3"/>
+                    <path d="M28 32 L28 38" stroke="#663399" stroke-width="2"/>
+                    <path d="M35 32 L35 38" stroke="#663399" stroke-width="2"/>
+                    <path d="M42 32 L42 38" stroke="#663399" stroke-width="2"/>
+                    <path d="M49 32 L49 38" stroke="#663399" stroke-width="2"/>
+                    <path d="M56 32 L56 38" stroke="#663399" stroke-width="2"/>
+                    <path d="M63 32 L63 38" stroke="#663399" stroke-width="2"/>
+                    <path d="M70 32 L70 38" stroke="#663399" stroke-width="2"/>
+                    <path d="M77 32 L77 38" stroke="#663399" stroke-width="2"/>
+                    <path d="M84 32 L84 38" stroke="#663399" stroke-width="2"/>
+                    <path d="M91 32 L91 38" stroke="#663399" stroke-width="2"/>
+                    <!-- Door -->
+                    <rect x="55" y="50" width="10" height="15" stroke="#663399" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <h3 class="service-title-large">STORE HOURS AND SERVICES</h3>
+        </div>
+
+        <div class="service-item">
+            <div class="service-icon-container">
+                <svg class="service-icon-large" viewBox="0 0 120 80">
+                    <!-- Triangle -->
+                    <path d="M60 20 L90 60 L30 60 Z" stroke="#663399" stroke-width="3" fill="none"/>
+                    <!-- Exclamation mark -->
+                    <line x1="60" y1="35" x2="60" y2="50" stroke="#663399" stroke-width="4"/>
+                    <circle cx="60" cy="55" r="2" fill="#663399"/>
+                </svg>
+            </div>
+            <h3 class="service-title-large">SERVICE ALERTS</h3>
+        </div>
+
+                 <div class="service-item">
+             <div class="service-icon-container">
+                 <svg class="service-icon-large" viewBox="0 0 120 80">
+                     <!-- Diamond shape -->
+                     <path d="M60 20 L85 40 L60 60 L35 40 Z" stroke="#663399" stroke-width="3" fill="none"/>
+                     <!-- Return arrow -->
+                     <path d="M55 35 Q60 30 65 35" stroke="#663399" stroke-width="3" fill="none"/>
+                     <path d="M58 32 L55 35 L58 38" stroke="#663399" stroke-width="2" fill="none"/>
+                 </svg>
+             </div>
+             <h3 class="service-title-large">RETURN A PACKAGE</h3>
+         </div>
+
+         <!-- Why Ship with FedEx Section -->
+         <div class="why-fedex-section">
+             <h2 class="why-fedex-title">Why ship with FedEx?</h2>
+             
+             <div class="feature-section">
+                 <h3 class="feature-title">Innovative solutions for reliability & speed</h3>
+                 <p class="feature-text">Whether it's across states or worldwide, we prioritize the secure and swift arrival of your shipments.</p>
+             </div>
+
+             <div class="feature-section">
+                 <h3 class="feature-title">Premium shipping at professional rates</h3>
+                 <p class="feature-text">When you need reliable delivery and careful handling, trust FedEx to get your items where they need to go on time.</p>
+             </div>
+
+             <div class="feature-section">
+                 <h3 class="feature-title">We ship everywhere*</h3>
+                 <p class="feature-text">From major cities to remote locations, your goods can reach worldwide.</p>
+             </div>
+
+             <div class="feature-section">
+                 <h3 class="feature-title">FedEx can ship for less than the Post Office</h3>
+                 <p class="feature-text">Two-day retail shipping, one flat rate. FedEx One Rate®**</p>
+             </div>
+
+             <div class="disclaimer-section">
+                 <p class="disclaimer-text">*FedEx doesn't ship anywhere sanctioned by the U.S.</p>
+                 <p class="disclaimer-text">**Exclusions apply. Visit the One Rate page to learn more.</p>
+             </div>
+
+             <button class="start-shipping-btn">START SHIPPING NOW</button>
+         </div>
+
+
+     </div>
 </body>
+<script>
+    // Add tracking functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const trackingInput = document.querySelector('.tracking-input');
+        const trackBtn = document.querySelector('.track-btn');
+        
+        // Set default tracking number
+        trackingInput.value = '612996989664721172348';
+        
+        // Add click event to track button
+        trackBtn.addEventListener('click', function() {
+            const trackingNumber = trackingInput.value.trim();
+            if (trackingNumber) {
+                // Redirect to tracking page with the tracking number
+                window.location.href = `tracking.html?tracking=${encodeURIComponent(trackingNumber)}`;
+            }
+        });
+        
+        // Add enter key support
+        trackingInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                trackBtn.click();
+            }
+        });
+        
+        // Clear placeholder on focus
+        trackingInput.addEventListener('focus', function() {
+            if (this.value === 'TRACKING ID') {
+                this.value = '';
+                this.style.color = '#333';
+                this.style.fontStyle = 'normal';
+            }
+        });
+        
+        // Restore placeholder if empty on blur
+        trackingInput.addEventListener('blur', function() {
+            if (this.value.trim() === '') {
+                this.value = 'TRACKING ID';
+                this.style.color = '#999';
+                this.style.fontStyle = 'italic';
+            }
+        });
+    });
+</script>
 </html> 
