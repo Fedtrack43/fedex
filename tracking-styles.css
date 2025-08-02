@@ -1,0 +1,414 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Status Bar */
+.status-bar {
+    background: #000;
+    color: white;
+    padding: 4px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-icons {
+    display: flex;
+    gap: 4px;
+}
+
+.status-icons i {
+    font-size: 10px;
+}
+
+/* Header */
+.header {
+    background: #660099;
+    color: white;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.back-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    position: relative;
+}
+
+.logo::after {
+    content: "Ex";
+    color: #ff6600;
+    font-weight: 400;
+}
+
+.header-icons {
+    display: flex;
+    gap: 16px;
+}
+
+.header-icons i {
+    font-size: 18px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.header-icons i:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Tracking Container */
+.tracking-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 16px;
+}
+
+/* Tracking Number Section */
+.tracking-number {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, #4d148c 0%, #6a1b9a 100%);
+    border-radius: 12px;
+    color: white;
+}
+
+.tracking-number h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.number-display {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.copy-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto;
+    transition: background-color 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Status Section */
+.status-section {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.status-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.status-badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-badge.in-transit {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-badge.delivered {
+    background: #d4edda;
+    color: #155724;
+}
+
+/* Delivery Info */
+.delivery-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #660099;
+}
+
+.info-item i {
+    color: #660099;
+    font-size: 18px;
+    margin-top: 2px;
+}
+
+.info-content strong {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.info-content p {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* Timeline Section */
+.timeline-section {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.timeline {
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e9ecef;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 24px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background: #e9ecef;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 16px;
+}
+
+.timeline-item.active .timeline-icon {
+    background: #660099;
+    color: white;
+}
+
+.timeline-content h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.timeline-content p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.timeline-content .time {
+    font-size: 12px;
+    color: #999;
+    font-weight: 500;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.action-btn {
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.action-btn:hover {
+    border-color: #660099;
+    background: #f8f9fa;
+}
+
+.action-btn i {
+    color: #660099;
+    font-size: 18px;
+}
+
+/* Browser Navigation */
+.browser-nav {
+    background: white;
+    border-top: 1px solid #e9ecef;
+    padding: 8px 16px;
+    position: sticky;
+    bottom: 0;
+}
+
+.address-bar {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #666;
+}
+
+.address-bar i {
+    color: #28a745;
+}
+
+.home-indicator {
+    width: 40px;
+    height: 4px;
+    background: #ccc;
+    border-radius: 2px;
+    margin: 8px auto 0;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .tracking-container {
+        padding: 16px 12px;
+    }
+    
+    .tracking-number,
+    .status-section,
+    .timeline-section {
+        padding: 20px;
+    }
+    
+    .number-display {
+        font-size: 20px;
+    }
+    
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tracking-container > * {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.timeline-item {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Copy button feedback */
+.copy-btn.copied {
+    animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+} 

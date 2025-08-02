@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FedEx Tracking - Package Details</title>
+    <link rel="stylesheet" href="tracking-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Mobile Status Bar -->
+    <div class="status-bar">
+        <div class="status-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="logo">FedEx.</div>
+        <div class="header-icons">
+            <i class="fas fa-share"></i>
+        </div>
+    </header>
+
+    <!-- Tracking Info -->
+    <div class="tracking-container">
+        <div class="tracking-number">
+            <h2>Tracking Number</h2>
+            <div class="number-display">612996989664721172348</div>
+            <button class="copy-btn">
+                <i class="fas fa-copy"></i>
+                Copy
+            </button>
+        </div>
+
+        <!-- Package Status -->
+        <div class="status-section">
+            <div class="status-header">
+                <h3>Package Status</h3>
+                <div class="status-badge in-transit">In Transit</div>
+            </div>
+            
+            <div class="delivery-info">
+                                 <div class="info-item">
+                     <i class="fas fa-map-marker-alt"></i>
+                     <div class="info-content">
+                         <strong>Current Location</strong>
+                         <p>63rd Street & St. Lawrence Ave<br>Chicago, IL 60621</p>
+                     </div>
+                 </div>
+                
+                                 <div class="info-item">
+                     <i class="fas fa-calendar"></i>
+                     <div class="info-content">
+                         <strong>Estimated Delivery</strong>
+                         <p>Next Tuesday by 8:00 PM</p>
+                     </div>
+                 </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-box"></i>
+                    <div class="info-content">
+                        <strong>Package Details</strong>
+                        <p>Weight: 2.5 lbs<br>Service: FedEx Ground</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tracking Timeline -->
+        <div class="timeline-section">
+            <h3>Shipment Progress</h3>
+                         <div class="timeline">
+                 <div class="timeline-item active">
+                     <div class="timeline-icon">
+                         <i class="fas fa-truck"></i>
+                     </div>
+                     <div class="timeline-content">
+                         <h4>Out for Delivery</h4>
+                         <p>Chicago, IL</p>
+                         <span class="time">Today, 8:30 AM</span>
+                     </div>
+                 </div>
+                 
+                 <div class="timeline-item active">
+                     <div class="timeline-icon">
+                         <i class="fas fa-building"></i>
+                     </div>
+                     <div class="timeline-content">
+                         <h4>Arrived at FedEx Facility</h4>
+                         <p>Chicago, IL</p>
+                         <span class="time">Today, 6:15 AM</span>
+                     </div>
+                 </div>
+                 
+                 <div class="timeline-item active">
+                     <div class="timeline-icon">
+                         <i class="fas fa-plane"></i>
+                     </div>
+                     <div class="timeline-content">
+                         <h4>In Transit</h4>
+                         <p>Indianapolis, IN</p>
+                         <span class="time">Yesterday, 3:20 PM</span>
+                     </div>
+                 </div>
+                 
+                 <div class="timeline-item active">
+                     <div class="timeline-icon">
+                         <i class="fas fa-building"></i>
+                     </div>
+                     <div class="timeline-content">
+                         <h4>Arrived at FedEx Facility</h4>
+                         <p>Memphis, TN</p>
+                         <span class="time">2 days ago, 11:30 PM</span>
+                     </div>
+                 </div>
+                 
+                 <div class="timeline-item active">
+                     <div class="timeline-icon">
+                         <i class="fas fa-box"></i>
+                     </div>
+                     <div class="timeline-content">
+                         <h4>Package Picked Up</h4>
+                         <p>63rd Street & St. Lawrence Ave<br>Chicago, IL</p>
+                         <span class="time">3 days ago, 2:15 PM</span>
+                     </div>
+                 </div>
+             </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="action-btn">
+                <i class="fas fa-bell"></i>
+                <span>Get Notifications</span>
+            </button>
+            <button class="action-btn">
+                <i class="fas fa-print"></i>
+                <span>Print Label</span>
+            </button>
+            <button class="action-btn">
+                <i class="fas fa-phone"></i>
+                <span>Contact Support</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Browser Navigation Bar -->
+    <div class="browser-nav">
+        <div class="address-bar">
+            <i class="fas fa-lock"></i>
+            <span>fedex.com/tracking</span>
+        </div>
+        <div class="home-indicator"></div>
+    </div>
+
+    <script src="tracking-script.js"></script>
+</body>
+</html> 
